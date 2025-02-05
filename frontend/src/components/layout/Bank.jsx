@@ -10,15 +10,15 @@ import {
 } from "react-icons/fa";
 
 // Correct relative import for images
-import bankImage1 from "../../assets/bank1.webp";
-import bankImage2 from "../../assets/Bank2.jpg";
-import bankImage3 from "../../assets/Bank3.webp";
-import savingsImage from "../../assets/savings.jpg";
-import loanImage from "../../assets/loan.jpg";
-import creditCardImage from "../../assets/creditCard.jpg";
-import investmentImage from "../../assets/investment.jpg";
-import insuranceImage from "../../assets/insuarance.jpg";
-import mobileBankingImage from "../../assets/mobileBanking.jpg";
+import bankImage1 from "../../assets/bank/bank1.webp";
+import bankImage2 from "../../assets/bank/Bank2.jpg";
+import bankImage3 from "../../assets/bank/Bank3.webp";
+import savingsImage from "../../assets/bank/savings.jpg";
+import loanImage from "../../assets/bank/loan.jpg";
+import creditCardImage from "../../assets/bank/creditCard.jpg";
+import investmentImage from "../../assets/bank/investment.jpg";
+import insuranceImage from "../../assets/bank/insuarance.jpg";
+import mobileBankingImage from "../../assets/bank/mobileBanking.jpg";
 
 const ServiceCard = ({ name, icon: Icon, image }) => {
   const [isHovered, setIsHovered] = useState(false);

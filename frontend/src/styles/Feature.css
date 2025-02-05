@@ -1,0 +1,73 @@
+/* Feature.css */
+.page-container {
+    background-color: #00509e ; /* Dark blue background */
+    color: #f3f4ef; /* White text for contrast */
+    min-height: 100vh;
+    padding: 100px;
+    font-family:"Times New Roman", Times, serif;
+}
+
+.header {
+    text-align: bold;
+    margin-bottom: 50px;
+    color:rgb(232, 150, 42)
+}
+
+.header h1 {
+    font-size: 7.5em;
+    margin-top: -100px;
+    margin-bottom: 20px;
+    color:rgb(212, 233, 23)
+}
+
+.header p {
+    margin-top: -50px;
+    font-size: 2.0em;
+    color:aliceblue
+}
+
+.container {
+    display: flex;
+    justify-content: flex;
+    align-items: flex;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: repeat(1, 100px); 
+    gap: 200px;
+    width: 100%;
+    max-width: 1200px;
+
+}
+
+.feature {
+    background-color: #001f3f; /* Slightly lighter blue for the cards */
+    border-radius: 100px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+    cursor: pointer; /* Add pointer cursor on hover */
+}
+/* #00509e 001f3f;*/
+.feature:hover {
+    transform: translateY(-10px);
+}
+
+.feature-icon {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.feature-title {
+    font-size: 1.0em;
+    font-weight: small;
+    margin-bottom: 1px;
+}
+
+.feature-description {
+    font-size: 0.5em;
+    line-height: 1.5;
+}

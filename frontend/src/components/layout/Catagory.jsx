@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
+// Import images for different categories
 import hospitalImage from "../../assets/hospital.jpg";
 import restaurantImage from "../../assets/restorent.jpeg";
 import gymImage from "../../assets/gym.webp";
 import educationImage from "../../assets/education.jpeg";
-import beautySpaImage from "../../assets/BeautySpa.jpeg";
+import beautySpaImage from "../../assets/beautyspa.jpeg"; // Make sure case matches!
 import bankImage from "../../assets/Bank.jpeg";
-import pgHostelsImage from "../../assets/PgHostel.jpeg";
+import EventOrganizerImage from "../../assets/EventOrganizer.jpg";
 import shoppingMallImage from "../../assets/ShoppingMall.jpeg";
-import drivingSchoolImage from "../../assets/DrivingSchool.png";
-import courierServiceImage from "../../assets/CourierService.jpeg";
+import Banner from "./Banner";
 
 const categories = [
   { name: "Hospital", image: hospitalImage },
@@ -20,10 +20,8 @@ const categories = [
   { name: "Education", image: educationImage },
   { name: "Beauty Spa", image: beautySpaImage },
   { name: "Bank", image: bankImage },
-  { name: "Pg/Hostels", image: pgHostelsImage },
+  { name: "Event Organizer", image: EventOrganizerImage },
   { name: "Shopping Mall", image: shoppingMallImage },
-  { name: "Driving School", image: drivingSchoolImage },
-  { name: "Courier Service", image: courierServiceImage },
 ];
 
 const ITEMS_PER_PAGE = 8;
@@ -51,65 +49,55 @@ const Category = () => {
   };
 
   const handleCategoryClick = (categoryName) => {
-    navigate(`/${categoryName.toLowerCase().replace(" ", "-")}`);
+    const formattedCategory = categoryName.toLowerCase().replace(/\s+/g, "-");
+
+
+    if (formattedCategory === "Education") {
+      navigate("/Education");
+    }else if (formattedCategory === "hospital") {
+      navigate("/Hospital");
+    }else if (formattedCategory === "event-organizer") {
+      navigate("/EventOrganizer");
+    } else if (formattedCategory === "bank") {
+      navigate("/banks");
+    } else if (formattedCategory === "beauty-spa") {
+      navigate("/beautyspa");
+    } else {
+      navigate(`/${formattedCategory}`);
+    }
   };
 
   return (
-    <div className="p-4">
-      <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          visible: { transition: { staggerChildren: 0.1 } },
-        }}
-      >
-        {currentItems.map((category, index) => (
-          <motion.div
-            key={index}
-            className="rounded-lg shadow-lg p-4 text-center cursor-pointer bg-blue-200"
-            variants={itemVariants}
-            whileHover="hover"
-            onClick={() => handleCategoryClick(category.name)}
-          >
-            <img
-              src={category.image}
-              alt={category.name}
-              className="w-full h-32 object-cover rounded-md"
-            />
-            <h3 className="mt-2 text-lg font-semibold">{category.name}</h3>
-          </motion.div>
-        ))}
-      </motion.div>
-
-      <div className="flex justify-between items-center mt-4">
-        <button
-          onClick={handlePrevPage}
-          disabled={currentPage === 1}
-          className={`px-4 py-2 rounded-lg ${
-            currentPage === 1
-              ? "bg-gray-300 cursor-not-allowed"
-              : "bg-blue-500 text-white hover:bg-blue-600"
-          }`}
+    <>
+      <Banner />
+      <div className="p-4">
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: { transition: { staggerChildren: 0.1 } },
+          }}
         >
-          Previous
-        </button>
-        <span className="text-sm text-gray-600">
-          Page {currentPage} of {totalPages}
-        </span>
-        <button
-          onClick={handleNextPage}
-          disabled={currentPage === totalPages}
-          className={`px-4 py-2 rounded-lg ${
-            currentPage === totalPages
-              ? "bg-gray-300 cursor-not-allowed"
-              : "bg-blue-500 text-white hover:bg-blue-600"
-          }`}
-        >
-          Next
-        </button>
+          {currentItems.map((category, index) => (
+            <motion.div
+              key={index}
+              className="rounded-lg shadow-lg p-4 text-center cursor-pointer bg-blue-200"
+              variants={itemVariants}
+              whileHover="hover"
+              onClick={() => handleCategoryClick(category.name)}
+            >
+              <img
+                src={category.image}
+                alt={category.name}
+                className="w-full h-32 object-cover rounded-md"
+              />
+              <h3 className="mt-2 text-lg font-semibold">{category.name}</h3>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
-    </div>
+    </>
   );
 };
 

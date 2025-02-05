@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import img from '../../assets/Designer.jpeg';
 import imgHover from '../../assets/people.jpeg';
 import { IoArrowForward } from 'react-icons/io5';
@@ -26,6 +27,7 @@ export const FadeUp = (delay) => {
 
 export default function Banner() {
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate(); // ✅ Import useNavigate and initialize
 
   return (
     <div className="bg-[#1e3a8a] w-full py-[100px]">
@@ -48,22 +50,22 @@ export default function Banner() {
           >
             Discover the best businesses, offers, and services right around the corner.
           </motion.p>
-          <motion.a
+          <motion.button
             variants={FadeUp(0.9)}
             initial="initial"
             animate="animate"
-            href="/directory"
             whileHover={{
               scale: 1.05,
               y: -5,
               transition: { duration: 0.3, ease: 'easeInOut' },
             }}
+            onClick={() => navigate('/category')} // ✅ Navigate to Category page on click
             className="bg-[#ffcc00] text-black text-semibold font-medium px-10 py-3 rounded-lg shadow-md 
               hover:bg-white hover:text-[#363964] transition-transform duration-100 flex items-center justify-center w-[200px]"
           >
             Find Services
             <IoArrowForward className="inline ml-2" />
-          </motion.a>
+          </motion.button>
         </div>
 
         {/* Supporting Visual Section */}
